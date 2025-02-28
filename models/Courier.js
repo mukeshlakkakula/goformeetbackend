@@ -9,6 +9,13 @@ const CourierSchema = new mongoose.Schema(
       enum: ["In Transit", "Delivered", "Delayed"],
       default: "In Transit",
     },
+    order_data: [
+      {
+        status: String,
+        timestamp: { type: Date, default: Date.now },
+      },
+    ],
+    users_tracking: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }], // Users tracking this item
   },
   { timestamps: true }
 );

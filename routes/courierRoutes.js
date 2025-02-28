@@ -4,12 +4,19 @@ const protect = require("../middleware/authMiddleware");
 const {
   trackShipment,
   addTrackingHistory,
+  updateCourierStatus,
+  getAllCouriers,
+  trackCourier,
 } = require("../controllers/courierController");
-
-// Route to track a shipment
+router.get("/all", protect, getAllCouriers);
+// 📌 Track a shipment
 router.post("/track", protect, trackShipment);
-
-// Route to add tracking history (for registered users)
+// Tracking courier by user
+router.post("/track-courier", protect, trackCourier);
+// 📌 Add tracking history (for registered users)
 router.post("/history", protect, addTrackingHistory);
+
+// 📌 Admin can update the courier status
+router.put("/update-status", protect, updateCourierStatus);
 
 module.exports = router;
