@@ -7,7 +7,12 @@ dotenv.config();
 connectDB();
 
 const app = express();
-app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+app.use(
+  cors({
+    origin: "https://goformeetfrontend-k5vr.vercel.app",
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use(cookieParser());
 
