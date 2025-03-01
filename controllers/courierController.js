@@ -11,7 +11,7 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-// 📌 Function to Send Email
+//  Function to Send Email
 const sendEmail = async (to, subject, text) => {
   try {
     await transporter.sendMail({
@@ -48,7 +48,7 @@ const trackCourier = async (req, res) => {
   }
 };
 
-// 📌 Add Tracking History (Updated)
+//  Add Tracking History (Updated)
 const addTrackingHistory = async (req, res) => {
   const { trackingNumber, status } = req.body;
   const user = req.user.id;
@@ -79,7 +79,7 @@ const addTrackingHistory = async (req, res) => {
   }
 };
 
-// 📌 Admin: Update Courier Status
+//  Admin: Update Courier Status
 const updateCourierStatus = async (req, res) => {
   const { trackingNumber, status, adminEmail } = req.body;
   const adminUser = adminEmail; // Assume req.user contains logged-in user data
@@ -123,44 +123,6 @@ const updateCourierStatus = async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 };
-
-// const updateCourierStatus = async (req, res) => {
-//   const { trackingNumber, status, adminEmail } = req.body;
-
-//   if (adminEmail !== "admin@gmail.com") {
-//     return res
-//       .status(403)
-//       .json({ message: "Unauthorized: Only admins can update status" });
-//   }
-
-//   try {
-//     const courier = await Courier.findOne({ trackingNumber }).populate(
-//       "users_tracking",
-//       "email"
-//     );
-
-//     if (!courier) return res.status(404).json({ message: "Courier not found" });
-
-//     // Update courier status & order history
-//     courier.status = status;
-//     courier.order_data.push({ status, timestamp: Date.now() });
-//     await courier.save();
-
-//     // Notify all users tracking the shipment
-//     const emails = courier.users_tracking.map((user) => user.email);
-//     if (emails.length > 0) {
-//       sendEmail(
-//         emails.join(","), // Send to all users tracking this courier
-//         "Courier Status Updated",
-//         `Your courier (${trackingNumber}) status has been updated to: ${status}`
-//       );
-//     }
-
-//     res.json({ message: "Courier status updated successfully", courier });
-//   } catch (error) {
-//     res.status(500).json({ message: "Server error" });
-//   }
-// };
 
 // 📌 Track a Shipment
 const trackShipment = async (req, res) => {
