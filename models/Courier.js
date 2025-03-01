@@ -15,7 +15,7 @@ const CourierSchema = new mongoose.Schema(
         timestamp: { type: Date, default: Date.now },
       },
     ],
-    users_tracking: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }], // Users tracking this item
+    users_tracking: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
   },
   { timestamps: true }
 );

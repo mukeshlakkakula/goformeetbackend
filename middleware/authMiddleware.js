@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 
 const protect = (req, res, next) => {
-  let token = req.cookies.token || req.headers.authorization?.split(" ")[1]; // Handle both cases
+  let token = req.cookies.token || req.headers.authorization?.split(" ")[1];
 
   console.log("Token received:", token);
 

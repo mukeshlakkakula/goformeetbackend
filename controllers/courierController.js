@@ -124,7 +124,7 @@ const updateCourierStatus = async (req, res) => {
   }
 };
 
-// 📌 Track a Shipment
+//  Track a Shipment
 const trackShipment = async (req, res) => {
   const { trackingNumber } = req.body;
 
@@ -136,7 +136,7 @@ const trackShipment = async (req, res) => {
     res.json({
       status: courier.status,
       trackingNumber: courier.trackingNumber,
-      user: courier.user.email, // Send back user email too
+      user: courier.user.email,
       order_data: courier.order_data,
     });
   } catch (error) {

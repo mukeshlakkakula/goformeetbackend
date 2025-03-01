@@ -25,7 +25,7 @@ const loginUser = async (req, res) => {
 
     res.cookie("token", token, { httpOnly: true }).json({
       message: "Login successful",
-      token, // ✅ Include JWT token in response
+      token,
       user: {
         id: user._id,
         name: user.name,
